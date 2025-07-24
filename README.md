@@ -1,3 +1,6 @@
-Запуск: npm i > npm run dev
+##Запуск
 
-
+```bash
+npm i
+npm run dev
+```
