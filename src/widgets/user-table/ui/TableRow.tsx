@@ -1,14 +1,12 @@
 import type { ListChildComponentProps } from "react-window";
 import { useAppDispatch, useAppSelector } from "../../../shared";
-import { fullfillUserDetailsInCard, toggleUserDetailsCardOpen } from "../model/slice";
+import { fullfillUserDetailsInCard } from "../model/slice";
 
 import "./TableRow.scss";
 
 export default function TableRow({ index, style }: ListChildComponentProps) {
   const dispatch = useAppDispatch();
-  const isUserDetailsOpen = useAppSelector(
-    (state) => state.userTable.isUserDetailsCardOpen
-  );
+ 
 
   const users = useAppSelector((store) => store.userTable.users);
 
@@ -34,17 +32,17 @@ export default function TableRow({ index, style }: ListChildComponentProps) {
       <div
         className="row_details"
         onClick={() => {
-          if (!isUserDetailsOpen) {
-            dispatch(
-              fullfillUserDetailsInCard({
-                id: id,
-                name: name,
-                email: email,
-              })
-            );
-          }
+        //   if (!isUserDetailsOpen) {
+        //     dispatch(
+        //       fullfillUserDetailsInCard({
+        //         id: id,
+        //         name: name,
+        //         email: email,
+        //       })
+        //     );
+        //   }
 
-          dispatch(toggleUserDetailsCardOpen());
+        //   dispatch(toggleUserDetailsCardOpen());
         }}
       >
         Подробнее

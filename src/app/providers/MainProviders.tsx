@@ -1,4 +1,4 @@
-import type { FC, JSX, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Provider } from "react-redux";
 

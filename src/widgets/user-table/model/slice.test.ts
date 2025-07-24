@@ -5,7 +5,6 @@ import {
   resetSearchByName,
   searchByName,
   sortTableByName,
-  toggleUserDetailsCardOpen,
   userTableReducer,
 } from "./slice";
 

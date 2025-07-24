@@ -8,4 +8,4 @@ export const headersLength = headers.length;
 
 export const headerHeight = 30;
 
-  
+export const rootId = "user-table";

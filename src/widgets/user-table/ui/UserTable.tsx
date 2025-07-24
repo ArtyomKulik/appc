@@ -5,19 +5,17 @@ import "./UserTable.scss";
 import TableHead from "./TableHead";
 import Row from "./TableRow";
 import { useAppSelector } from "../../../shared";
-import UserDetailsCard from "./UserDetailsCard";
+import DetailsSidebar from "../../details-sidebar/ui/DetailsSidebar";
+import { rootId } from "../model/constants";
 
 export default function UserTable() {
   const users = useAppSelector((store) => store.userTable.users);
-  const isUserDetailsOpen = useAppSelector(
-    (state) => state.userTable.isUserDetailsCardOpen
-  );
 
   const rowHeight = 50;
 
   return (
     <>
-      <div className="table_wrapper">
+      <div className="table_wrapper" id={rootId}>
         <TableHead />
         <AutoSizer>
           {({ width, height }) => (
@@ -33,7 +31,7 @@ export default function UserTable() {
         </AutoSizer>
       </div>
 
-      {isUserDetailsOpen && <UserDetailsCard />}
+      {<DetailsSidebar containerId={rootId} />}
     </>
   );
 }

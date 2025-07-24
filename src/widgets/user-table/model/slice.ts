@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { initialUsers } from "./constants";
 import type { User } from "../../../entitites/user";
 import type { UserDetailsType, UserTableSortByNamePayloadType } from "./types";
+import type { DetailsSidebarPropsType } from "../../../shared";
 
 interface UserTableState {
   usersInit: User[];
@@ -11,8 +12,8 @@ interface UserTableState {
   sortDirection: UserTableSortByNamePayloadType;
   searchValue: string;
   userDetails: UserDetailsType;
-  isUserDetailsCardOpen: boolean;
   editFormIsOpen: boolean;
+  sidebarProps: DetailsSidebarPropsType;
 }
 
 const initialState: UserTableState = {
@@ -23,7 +24,10 @@ const initialState: UserTableState = {
   error: null,
   searchValue: "",
   userDetails: { id: null, name: "", email: "" },
-  isUserDetailsCardOpen: false,
+  sidebarProps: {
+    formType: null,
+    formData: null,
+  },
   editFormIsOpen: false,
 };
 
@@ -68,11 +72,8 @@ const userTableSlice = createSlice({
     },
 
     resetSearchByName: (state) => {
-      //   state.users = state.usersInit;
-      //   state.searchValue = "";
-    },
-    toggleUserDetailsCardOpen: (state) => {
-      state.isUserDetailsCardOpen = !state.isUserDetailsCardOpen;
+      state.users = state.usersInit;
+      state.searchValue = "";
     },
     fullfillUserDetailsInCard: (state, action: PayloadAction<UserDetailsType>) => {
       state.userDetails = action.payload;
@@ -90,7 +91,6 @@ export const {
   sortTableByName,
   searchByName,
   resetSearchByName,
-  toggleUserDetailsCardOpen,
   fullfillUserDetailsInCard,
   editUserDetails,
 } = userTableSlice.actions;
