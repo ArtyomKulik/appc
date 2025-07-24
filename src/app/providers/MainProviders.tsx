@@ -1,15 +1,11 @@
-import type { FC, JSX } from "react";
+import type { FC, JSX, PropsWithChildren } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Provider } from "react-redux";
 
 import { reduxStore } from "../store";
 import { Fallback } from "../../shared";
 
-interface IProviders {
-  readonly children: JSX.Element;
-}
-
-export const MainProviders: FC<IProviders> = ({ children }) => {
+export const MainProviders = ({ children }: PropsWithChildren) => {
   return (
     <ErrorBoundary FallbackComponent={Fallback}>
       <Provider store={reduxStore}>{children}</Provider>

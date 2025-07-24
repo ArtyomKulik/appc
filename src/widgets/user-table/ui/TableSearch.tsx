@@ -17,7 +17,7 @@ export default function TableSearch() {
     <div>
       <input
         type="search"
-        placeholder="Search..."
+        placeholder="Поиск..."
         value={search}
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
           const nativeEvent = e.nativeEvent as InputEvent;

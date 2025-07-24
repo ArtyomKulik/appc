@@ -31,10 +31,6 @@ const userTableSlice = createSlice({
   name: "userTable",
   initialState,
   reducers: {
-    setUsers: (state, action: PayloadAction<User[]>) => {
-      state.users = action.payload;
-      state.loading = false;
-    },
     sortTableByName: (state, action: PayloadAction<UserTableSortByNamePayloadType>) => {
       const direction = action.payload;
       switch (direction) {
@@ -48,7 +44,12 @@ const userTableSlice = createSlice({
             return b.name.localeCompare(a.name);
           });
           break;
+        case null:
+          state.sortDirection = null;
+          state.users = [...state.usersInit];
+          break;
         default:
+          state.sortDirection = null;
           state.users = [...state.usersInit];
           break;
       }
@@ -64,7 +65,6 @@ const userTableSlice = createSlice({
       state.searchValue = "";
     },
     toggleUserDetailsCardOpen: (state) => {
-      console.log(state.isUserDetailsCardOpen);
       state.isUserDetailsCardOpen = !state.isUserDetailsCardOpen;
     },
     fullfillUserDetailsInCard: (state, action: PayloadAction<UserDetailsType>) => {
@@ -80,7 +80,6 @@ const userTableSlice = createSlice({
 });
 
 export const {
-  setUsers,
   sortTableByName,
   searchByName,
   resetSearchByName,
