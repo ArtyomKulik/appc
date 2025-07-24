@@ -23,7 +23,7 @@ export default function UserTable() {
           {({ width, height }) => (
             <List
               height={height}
-              itemCount={users.length - 1}
+              itemCount={users.length}
               itemSize={rowHeight}
               width={width}
             >

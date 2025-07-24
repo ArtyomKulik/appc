@@ -55,14 +55,21 @@ const userTableSlice = createSlice({
       }
     },
     searchByName: (state, action: PayloadAction<string>) => {
-      const searchValue = action.payload.toLowerCase();
-      state.users = state.usersInit.filter((user) =>
-        user.name.toLowerCase().includes(searchValue)
-      );
+      const searchValue = action.payload.toLowerCase().trim();
+
+      if (!searchValue) {
+        state.users = [...state.usersInit];
+        return;
+      }
+      state.users = state.usersInit.filter((user) => {
+        const [name, surname] = user.name.toLowerCase().split(" ");
+        return name.includes(searchValue) || surname.includes(searchValue);
+      });
     },
+
     resetSearchByName: (state) => {
-      state.users = state.usersInit;
-      state.searchValue = "";
+      //   state.users = state.usersInit;
+      //   state.searchValue = "";
     },
     toggleUserDetailsCardOpen: (state) => {
       state.isUserDetailsCardOpen = !state.isUserDetailsCardOpen;

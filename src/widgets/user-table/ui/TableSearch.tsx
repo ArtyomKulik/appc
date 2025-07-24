@@ -25,11 +25,12 @@ export default function TableSearch() {
             nativeEvent.inputType === "deleteContentForward" &&
             e.currentTarget.value === ""
           ) {
-            dispatch(resetSearchByName());
+            // dispatch(resetSearchByName());
           }
         }}
         onChange={(e) => {
           const value = e.target.value;
+
           setSearch(value);
         }}
       />

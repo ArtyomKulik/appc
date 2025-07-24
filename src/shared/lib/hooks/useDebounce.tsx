@@ -6,7 +6,7 @@ type UseDebounceProps = {
 };
 
 export default function useDebounce({ value, debounceTime = 300 }: UseDebounceProps) {
-  const [debouncedValue, setDebouncedValue] = useState("");
+  const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const timeout = setTimeout(() => {
       setDebouncedValue(value);
