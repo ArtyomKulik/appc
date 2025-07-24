@@ -1,0 +1,47 @@
+.sort-icons {
+  user-select: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+
+  .icon {
+    cursor: pointer;
+    margin: 0 5px 0 0;
+    transition: fill 0.2s;
+
+    &.active path,
+    &.active rect {
+      fill: #000;
+    }
+
+    &:hover path,
+    &:hover rect {
+      fill: #000;
+    }
+  }
+}
+
+.minus {
+  width: 12px;
+  height: 2px;
+  margin-right: 4px;
+  rect {
+    rx: 1px;
+  }
+}
+.arrow {
+  cursor: pointer;
+  transition: fill 0.2s;
+  &.active path {
+    fill: #000;
+  }
+  &:hover path {
+    fill: #000;
+  }
+  &.up {
+    margin-bottom: 2px;
+  }
+  &.down {
+    margin-top: 2px;
+  }
+}

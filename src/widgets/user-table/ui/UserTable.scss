@@ -1,0 +1,55 @@
+.GridItemEven,
+.GridItemOdd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.GridItemEven {
+  background-color: #f8f8f0;
+}
+
+.table_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.GridHeader {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+.GridHeaderItem {
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+.Grid {
+  overflow: auto !important;
+}
+
+.cell {
+  padding: 0 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row_details {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 4px 8px;
+  background: #eef;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
