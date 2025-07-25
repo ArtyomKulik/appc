@@ -34,7 +34,6 @@ const mockUsers: User[] = [
 ];
 
 const initialState: Parameters<typeof userTableReducer>[0] = {
-  usersInit: mockUsers,
   users: mockUsers,
   sortDirection: null,
   searchValue: "",

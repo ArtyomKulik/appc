@@ -5,7 +5,6 @@ import type { UserTableSortByNamePayloadType } from "./types";
 import type { DetailsSidebarPropsType, UserDetailsType } from "../../../shared";
 
 interface UserTableState {
-  usersInit: User[];
   users: User[];
   sortDirection: UserTableSortByNamePayloadType;
   searchValue: string;
@@ -14,7 +13,6 @@ interface UserTableState {
 }
 
 const initialState: UserTableState = {
-  usersInit: initialUsers,
   users: initialUsers,
   sortDirection: null,
   searchValue: "",
@@ -44,29 +42,28 @@ const userTableSlice = createSlice({
           break;
         case null:
           state.sortDirection = null;
-          state.users = [...state.usersInit];
+          state.users = [...initialUsers];
           break;
         default:
           state.sortDirection = null;
-          state.users = [...state.usersInit];
+          state.users = [...initialUsers];
           break;
       }
     },
     searchByName: (state, action: PayloadAction<string>) => {
       const searchValue = action.payload.toLowerCase().trim();
-
       if (!searchValue) {
-        state.users = [...state.usersInit];
+        state.users = [...initialUsers];
         return;
       }
-      state.users = state.usersInit.filter((user) => {
+      state.users = initialUsers.filter((user) => {
         const [name, surname] = user.name.toLowerCase().split(" ");
         return name.includes(searchValue) || surname.includes(searchValue);
       });
     },
 
     resetSearchByName: (state) => {
-      state.users = state.usersInit;
+      state.users = initialUsers;
       state.searchValue = "";
     },
     setSidebarProps: (state, action: PayloadAction<DetailsSidebarPropsType>) => {
