@@ -1,12 +1,13 @@
-## Запуск
+## Запуск приложения
 
 ```bash
 npm i
 npm run dev
-
-npm run test
-
-npm run test <file name>
 ```
 
+## Запуск тестов
 
+```bash
+npm run test
+npm run test <file name>
+```
