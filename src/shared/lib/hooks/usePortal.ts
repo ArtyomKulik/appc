@@ -1,4 +1,3 @@
-// shared/lib/hooks/usePortal.ts
 import { useEffect, useRef, useState } from "react";
 
 /**

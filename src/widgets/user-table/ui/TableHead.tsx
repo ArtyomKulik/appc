@@ -17,15 +17,7 @@ export default function TableHead() {
       {headers.map((text, idx) => {
         const isNameColumn = text === "Имя";
         return (
-          <div
-            className={"headerItem"}
-            key={idx + text}
-            style={{
-              flex: 1,
-              textAlign: "center",
-              fontWeight: "bold",
-            }}
-          >
+          <div className={"headerItem"} key={idx + text}>
             {text}
             {isNameColumn && <SortByNameButton />}
           </div>

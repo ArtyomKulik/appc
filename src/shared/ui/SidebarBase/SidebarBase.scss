@@ -64,7 +64,6 @@
     overflow-y: auto;
     overflow-x: hidden;
 
-    // Если нет header
     .sidebar-base:not(:has(.sidebar-base__header)) & {
       height: 100vh;
     }

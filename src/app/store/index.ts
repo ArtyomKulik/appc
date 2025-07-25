@@ -1,1 +1,1 @@
-export { reduxStore } from "./store";
+export { store } from "./store";

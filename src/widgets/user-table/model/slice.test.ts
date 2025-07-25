@@ -1,5 +1,5 @@
-import type { User } from "../../../entitites/user";
 import type { DetailsSidebarPropsType, UserDetailsType } from "../../../shared";
+import { initialUsers } from "./constants";
 import {
   userTableReducer,
   sortTableByName,
@@ -9,29 +9,7 @@ import {
   editUser,
 } from "./slice";
 
-const mockUsers: User[] = [
-  {
-    id: 1,
-    name: "Leanne Graham",
-    email: "Sincere@april.biz",
-    city: "Gwenborough",
-    phone: "777-01",
-  },
-  {
-    id: 2,
-    name: "Ervin Howell",
-    email: "Shanna@melissa.tv",
-    city: "Wisokyburgh",
-    phone: "777-02",
-  },
-  {
-    id: 3,
-    name: "Clementine Bauch",
-    email: "Nathan@yesenia.net",
-    city: "McKenziehaven",
-    phone: "777-03",
-  },
-];
+const mockUsers = initialUsers;
 
 const initialState: Parameters<typeof userTableReducer>[0] = {
   users: mockUsers,
@@ -44,21 +22,23 @@ const initialState: Parameters<typeof userTableReducer>[0] = {
 describe("userTableSlice", () => {
   describe("sortTableByName", () => {
     it("сортирует по возрастанию (asc)", () => {
-      const state = userTableReducer(initialState, sortTableByName("asc"));
-      expect(state.users.map((u) => u.name)).toEqual([
-        "Clementine Bauch",
-        "Ervin Howell",
-        "Leanne Graham",
-      ]);
+      const { users } = userTableReducer(initialState, sortTableByName("asc"));
+
+      const isAscSorted = users.every(
+        (curr, idx, arr) => idx === 0 || arr[idx - 1].name.localeCompare(curr.name) <= 0
+      );
+
+      expect(isAscSorted).toBe(true);
     });
 
     it("сортирует по убыванию (desc)", () => {
-      const state = userTableReducer(initialState, sortTableByName("desc"));
-      expect(state.users.map((u) => u.name)).toEqual([
-        "Leanne Graham",
-        "Ervin Howell",
-        "Clementine Bauch",
-      ]);
+      const { users } = userTableReducer(initialState, sortTableByName("desc"));
+
+      const isDescSorted = users.every(
+        (curr, idx, arr) => idx === 0 || arr[idx - 1].name.localeCompare(curr.name) >= 0
+      );
+
+      expect(isDescSorted).toBe(true);
     });
 
     it("сбрасывает порядок при null", () => {
@@ -132,7 +112,7 @@ describe("userTableSlice", () => {
 
     it("обновляет данные выбранного пользователя", () => {
       const state = userTableReducer(initialState, editUser(updated));
-      const user = state.users.find((u) => u.id === 1)!;
+      const user = state.users.find((u) => u.id === 1);
       expect(user).toMatchObject(updated);
     });
 

@@ -9,7 +9,7 @@ export default function TableRow({ index, style }: ListChildComponentProps) {
 
   const users = useAppSelector((store) => store.userTable.users);
 
-  const user = users[index];
+  const user = users[index];    
   const { id, name, email } = user || {};
   return (
     <div

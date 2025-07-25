@@ -1,4 +1,3 @@
-// shared/ui/SidebarBase/SidebarBase.tsx
 import { type ReactNode } from "react";
 import "./SidebarBase.scss";
 

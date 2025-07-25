@@ -2,9 +2,9 @@ import { UserDetailsForm } from "../../../features/user-details-form";
 import {
   PortalWrapper,
   SidebarBase,
-  useAppDispatch,
   type DetailsSidebarPropsType,
 } from "../../../shared";
+import { useAppDispatch } from "../../../shared/lib";
 import { setSidebarProps } from "../../user-table/model/slice";
 
 type DetailsSidebarProps = {

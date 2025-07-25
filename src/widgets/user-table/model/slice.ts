@@ -1,8 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { initialUsers } from "./constants";
-import type { User } from "../../../entitites/user";
 import type { UserTableSortByNamePayloadType } from "./types";
 import type { DetailsSidebarPropsType, UserDetailsType } from "../../../shared";
+import type { User } from "../../../entitities/user";
 
 interface UserTableState {
   users: User[];

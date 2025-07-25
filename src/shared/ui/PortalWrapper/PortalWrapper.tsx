@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { usePortal } from "../../lib/hooks";
+import { usePortal } from "../../lib";
 
 interface PortalProps {
   children: ReactNode;
