@@ -9,8 +9,8 @@ import DetailsSidebar from "../../details-sidebar/ui/DetailsSidebar";
 import { rootId } from "../model/constants";
 
 export default function UserTable() {
-  const users = useAppSelector((store) => store.userTable.users);
-
+  const users = useAppSelector((state) => state.userTable.users);
+  const sidebarProps = useAppSelector((state) => state.userTable.sidebarProps);
   const rowHeight = 50;
 
   return (
@@ -31,7 +31,13 @@ export default function UserTable() {
         </AutoSizer>
       </div>
 
-      {<DetailsSidebar containerId={rootId} />}
+      {sidebarProps.formType === "userDetails" && (
+        <DetailsSidebar
+          containerId={rootId}
+          initialFormData={sidebarProps.formData}
+          type={sidebarProps.formType}
+        />
+      )}
     </>
   );
 }

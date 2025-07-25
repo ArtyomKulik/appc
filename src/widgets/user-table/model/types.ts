@@ -7,10 +7,3 @@ export type UserTableSearchPayloadType = {
   value: string;
 };
 
-export type UserDetailsType = {
-  id: number | null;
-  name: string;
-  email: string;
-};
-
-export type UserDetailsFormDataType = Omit<UserDetailsType, "id">;

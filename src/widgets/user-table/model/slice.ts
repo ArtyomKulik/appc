@@ -1,18 +1,15 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { initialUsers } from "./constants";
 import type { User } from "../../../entitites/user";
-import type { UserDetailsType, UserTableSortByNamePayloadType } from "./types";
-import type { DetailsSidebarPropsType } from "../../../shared";
+import type { UserTableSortByNamePayloadType } from "./types";
+import type { DetailsSidebarPropsType, UserDetailsType } from "../../../shared";
 
 interface UserTableState {
   usersInit: User[];
   users: User[];
-  loading: boolean;
-  error: string | null;
   sortDirection: UserTableSortByNamePayloadType;
   searchValue: string;
   userDetails: UserDetailsType;
-  editFormIsOpen: boolean;
   sidebarProps: DetailsSidebarPropsType;
 }
 
@@ -20,15 +17,12 @@ const initialState: UserTableState = {
   usersInit: initialUsers,
   users: initialUsers,
   sortDirection: null,
-  loading: false,
-  error: null,
   searchValue: "",
   userDetails: { id: null, name: "", email: "" },
   sidebarProps: {
     formType: null,
     formData: null,
   },
-  editFormIsOpen: false,
 };
 
 const userTableSlice = createSlice({
@@ -75,10 +69,11 @@ const userTableSlice = createSlice({
       state.users = state.usersInit;
       state.searchValue = "";
     },
-    fullfillUserDetailsInCard: (state, action: PayloadAction<UserDetailsType>) => {
-      state.userDetails = action.payload;
+    setSidebarProps: (state, action: PayloadAction<DetailsSidebarPropsType>) => {
+      state.sidebarProps.formData = action.payload.formData;
+      state.sidebarProps.formType = action.payload.formType;
     },
-    editUserDetails: (state, action: PayloadAction<UserDetailsType>) => {
+    editUser: (state, action: PayloadAction<UserDetailsType>) => {
       const { id, name, email } = action.payload;
       state.users = state.users.map((user) => {
         return user.id === id ? { ...user, name, email } : user;
@@ -91,8 +86,8 @@ export const {
   sortTableByName,
   searchByName,
   resetSearchByName,
-  fullfillUserDetailsInCard,
-  editUserDetails,
+  setSidebarProps,
+  editUser,
 } = userTableSlice.actions;
 export const userTableReducer = userTableSlice.reducer;
 
